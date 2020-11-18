@@ -14,19 +14,22 @@ request.send();
 request.onreadystatechange = function() {
     if(this.readyState === 2) {
         document.querySelector(".loading").style.display = "block";
+        document.title = "Nom Nom | Loading...";
     }
     if(this.readyState === 4 && this.status === 200) {
         document.querySelector(".details").style.display = "grid";
         document.querySelector(".details").style.gridTemplateColumns = "30% 70%";
         document.querySelector(".loading").style.display = "none";
         addRecipeDetails(JSON.parse(this.responseText).meals[0]);
+    } else if(this.readyState === 4 && this.status !== 200) {
+        handleNetworkFailure();
     }
 }
 
 const goToHome = () => window.location.href = "/";
 
 const addRecipeDetails = response => {
-    let container = document.querySelector(".recipe-details-container");
+    document.title = `Nom Nom | ${response.strMeal}`;
     document.querySelector(".recipe-title").innerHTML = response.strMeal;
     document.querySelector(".video").setAttribute('src', response.strYoutube.replace("watch?v=", "embed/")); 
     let ingredientsList = document.querySelector(".ingredients-list");
@@ -37,6 +40,11 @@ const addRecipeDetails = response => {
         ingredientsList.appendChild(listElement);
     }
     document.querySelector(".instruction").innerHTML = response.strInstructions;
+}
+
+const handleNetworkFailure = () => {
+    document.querySelector(".recipe-details-container").style.display = "none";
+    document.querySelector(".error").style.display = "block";
 }
 
 const getIngredients = response => {

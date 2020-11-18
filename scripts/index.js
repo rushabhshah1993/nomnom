@@ -1,13 +1,3 @@
-// let request = new XMLHttpRequest();
-// request.open('GET', 'https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata', true);
-// request.setRequestHeader('Accept', 'application/json');
-// request.send();
-// request.onreadystatechange = function() {
-//     if(this.readyState === 4 && this.status === 200) {
-//         console.log(this.responseText);
-//     }
-// }
-
 let request = new XMLHttpRequest();
 request.open('GET', 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Pasta', true);
 request.send();
@@ -18,6 +8,8 @@ request.onreadystatechange = function() {
     if(this.readyState === 4 && this.status === 200) {
         document.querySelector(".loading").style.display = 'none';
         createRecipeCards(JSON.parse(this.responseText).meals);
+    } else if(this.readyState === 4 && this.status !== 200) {
+        handleNetworkFailure();
     }
 }
 
@@ -40,6 +32,11 @@ const createRecipeCards = list => {
 
         recipeCard.onclick = () => viewRecipe(recipe.idMeal);
     }
+}
+
+const handleNetworkFailure = () => {
+    document.querySelector(".recipes-container").style.display = "none";
+    document.querySelector(".error").style.display = "block";
 }
 
 

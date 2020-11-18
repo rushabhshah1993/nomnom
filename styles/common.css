@@ -22,3 +22,7 @@ html, body {
 .subtitle {
     font-size: 18px;
 }
+
+.error {
+    display: none;
+}
