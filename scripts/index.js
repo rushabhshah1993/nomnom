@@ -40,4 +40,4 @@ const handleNetworkFailure = () => {
 }
 
 
-const viewRecipe = id => window.location.href = `/recipe-detail.html?id=${id}`;
+const viewRecipe = id => window.location.href = `recipe-detail.html?id=${id}`;

@@ -26,7 +26,7 @@ request.onreadystatechange = function() {
     }
 }
 
-const goToHome = () => window.location.href = "/";
+const goToHome = () => window.location.href = "index.html";
 
 const addRecipeDetails = response => {
     document.title = `Nom Nom | ${response.strMeal}`;
