@@ -1,5 +1,12 @@
-.recipe-detail-container {
-    
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.all-recipes {
+    cursor: pointer;
+    color: #007bff;
 }
 
 .recipe-title {
@@ -18,4 +25,17 @@
 
 .recipe {
     overflow-y: auto;
+}
+
+.recipe-video {
+    margin-bottom: 16px;
+}
+
+.video {
+    height: 400px;
+    width: 100%;
+}
+
+.ingredients-list {
+    padding-left: 15px;
 }

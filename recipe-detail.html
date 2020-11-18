@@ -9,22 +9,28 @@
 </head>
 <body>
     <div class="header">
-        <p class="title">NOM NOM</p>
-        <p class="subtitle">The best place to learn mouth-watering recipes!</p>
+        <div>
+            <p class="title">NOM NOM</p>
+            <p class="subtitle">The best place to learn mouth-watering recipes!</p>
+        </div>
+        <p class="all-recipes" onclick="goToHome()">All Recipes</p>
     </div>
     <div class="recipe-details-container">
-        <p class="recipe-title">ss</p>
+        <p class="recipe-title"></p>
         <div class="recipe-video">
-
+            <iframe class="video" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="details">
             <div class="ingredients">
                 <p class="section-title">Ingredients</p>
+                <ol class="ingredients-list"></ol>
             </div>
             <div class="recipe">
                 <p class="section-title">Recipe</p>
+                <p class="instruction"></p>
             </div>
         </div>
     </div>
+    <script src="scripts/recipe-detail.js"></script>
 </body>
 </html>
