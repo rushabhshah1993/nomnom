@@ -12,15 +12,18 @@ let request = new XMLHttpRequest();
 request.open('GET', `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, true);
 request.send();
 request.onreadystatechange = function() {
+    if(this.readyState === 2) {
+        document.querySelector(".loading").style.display = "block";
+    }
     if(this.readyState === 4 && this.status === 200) {
+        document.querySelector(".details").style.display = "grid";
+        document.querySelector(".details").style.gridTemplateColumns = "30% 70%";
+        document.querySelector(".loading").style.display = "none";
         addRecipeDetails(JSON.parse(this.responseText).meals[0]);
     }
 }
 
-const goToHome = () => {
-    console.log("Hello");
-    window.location.href = "/";
-}
+const goToHome = () => window.location.href = "/";
 
 const addRecipeDetails = response => {
     let container = document.querySelector(".recipe-details-container");

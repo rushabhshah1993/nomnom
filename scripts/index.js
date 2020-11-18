@@ -12,7 +12,11 @@ let request = new XMLHttpRequest();
 request.open('GET', 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Pasta', true);
 request.send();
 request.onreadystatechange = function() {
+    if(this.readyState === 2) {
+        document.querySelector(".loading").style.display = 'block';
+    }
     if(this.readyState === 4 && this.status === 200) {
+        document.querySelector(".loading").style.display = 'none';
         createRecipeCards(JSON.parse(this.responseText).meals);
     }
 }
